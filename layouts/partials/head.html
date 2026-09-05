@@ -279,11 +279,11 @@
 
 <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  if (window.mermaid && document.querySelector('.mermaid')) {
-    mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'neutral' });
-  }
-});
+(function initMermaid() {
+  if (!window.mermaid) { setTimeout(initMermaid, 30); return; }
+  mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'neutral', fontFamily: 'inherit' });
+  mermaid.run({ querySelector: '.mermaid' });
+})();
 </script>
 
 <style>
