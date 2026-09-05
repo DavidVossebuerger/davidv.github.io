@@ -32,16 +32,3 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 ---
 
-##### Citation
-
-Vossebürger, David. 2026. *"Rule-Based Evaluation of PO3-Inspired ICT Strategies: A Reproducible Analysis of Weekly Profile and Daily Swing Framework."* Available at SSRN 6700099.
-
-```bibtex
-@misc{Vosseburger2026_ICT_EN,
-  author       = {Vossebürger, David},
-  title        = {Rule-Based Evaluation of PO3-Inspired ICT Strategies: A Reproducible Analysis of Weekly Profile and Daily Swing Framework},
-  year         = {2026},
-  note         = {Last revised 12 June 2026},
-  howpublished = {Available at SSRN: \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6700099}}
-}
-```

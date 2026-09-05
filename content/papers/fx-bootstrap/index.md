@@ -33,15 +33,3 @@ The calibrated transition matrix passes the Section 11.7 stationarity gate (TV d
 
 ---
 
-##### Citation
-
-Vossebürger, David. 2026. *"Regime-Preserving Bootstrap for FX Fair-Value Models."* Available at SSRN 6890880.
-
-```bibtex
-@misc{Vosseburger2026_MCRegime,
-  author       = {Vossebürger, David},
-  title        = {Regime-Preserving Bootstrap for FX Fair-Value Models},
-  year         = {2026},
-  howpublished = {Available at SSRN: \url{https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6890880}}
-}
-```
