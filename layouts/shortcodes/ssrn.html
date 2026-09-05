@@ -10,9 +10,9 @@
   {{- errorf "ssrn shortcode: no paper data for id %q" $id -}}
 {{- end -}}
 <a class="repo-card" href="{{ $paper.ssrn_url }}" target="_blank" rel="noopener">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M3 3h18v2H3V3zm0 4h18v2H3V7zm0 4h12v2H3v-2zm0 4h18v2H3v-2zm0 4h10v2H3v-2z"/></svg>
+  <img src="/social/ssrn.svg" alt="SSRN" class="repo-logo">
   <div class="repo-meta">
-    <span class="repo-name">SSRN #{{ $paper.id }} · {{ $paper.title }}</span>
+    <span class="repo-name">{{ $paper.title }}</span>
     <span class="repo-action">Read on SSRN →</span>
   </div>
 </a>
