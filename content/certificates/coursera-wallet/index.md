@@ -62,11 +62,40 @@ date: 2026-09-05
 .cert-list li:last-child { border-bottom: 0; }
 .cert-list-name { flex: 1; }
 .cert-list-meta { opacity: 0.6; font-size: 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.cert-details {
+  margin: 1.4rem 0 0;
+  border-top: 1px solid rgba(127,127,127,0.18);
+  padding-top: 1rem;
+}
+.cert-details summary {
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+  list-style: none;
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(127,127,127,0.3);
+  border-radius: 4px;
+  opacity: 0.9;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.cert-details summary::-webkit-details-marker { display: none; }
+.cert-details summary::before {
+  content: "+ ";
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  opacity: 0.6;
+}
+.cert-details[open] summary::before { content: "− "; }
+.cert-details summary:hover {
+  background: rgba(127,127,127,0.06);
+  border-color: rgba(127,127,127,0.5);
+}
+.cert-details[open] summary { margin-bottom: 0.8rem; }
 </style>
 
 ##### Featured (3 of 6)
 
-The substantive courses. The rest are listed below.
+The three substantive courses. The rest are below.
 
 <div class="cert-grid">
 
@@ -105,13 +134,11 @@ The substantive courses. The rest are listed below.
 
 ##### All 6 certificates
 
-Flat list with verify links.
-
+<details class="cert-details">
+<summary>View all 3 remaining certificates</summary>
 <ul class="cert-list">
-<li><a class="cert-list-name" href="https://www.coursera.org/account/accomplishments/verify/QK1RN1KGT7XG" target="_blank" rel="noopener">Financial Markets</a><span class="cert-list-meta">Yale</span></li>
-<li><a class="cert-list-name" href="https://www.coursera.org/account/accomplishments/verify/B9QV7U7PHGNK" target="_blank" rel="noopener">Introduction to Statistics</a><span class="cert-list-meta">Stanford Online</span></li>
-<li><a class="cert-list-name" href="https://www.coursera.org/account/accomplishments/verify/RTIJ3RRVZVT4" target="_blank" rel="noopener">Linear Regression with Python</a><span class="cert-list-meta">Coursera</span></li>
 <li><a class="cert-list-name" href="https://www.coursera.org/account/accomplishments/verify/C4RVYBUULTLJ" target="_blank" rel="noopener">Risk Management and Financial Theory</a><span class="cert-list-meta">Duke</span></li>
 <li><a class="cert-list-name" href="https://www.coursera.org/account/accomplishments/verify/N8R0O9OB7ECV" target="_blank" rel="noopener">Project and Stress-Test Financial Plans</a><span class="cert-list-meta">Coursera</span></li>
 <li><a class="cert-list-name" href="https://www.coursera.org/account/accomplishments/verify/9ADMQG6Y8GN4" target="_blank" rel="noopener">Calculate WACC: Capital Costs</a><span class="cert-list-meta">Coursera</span></li>
 </ul>
+</details>

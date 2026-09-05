@@ -62,11 +62,40 @@ date: 2026-09-05
 .cert-list li:last-child { border-bottom: 0; }
 .cert-list .cert-list-name { flex: 1; }
 .cert-list .cert-list-meta { opacity: 0.6; font-size: 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+.cert-details {
+  margin: 1.4rem 0 0;
+  border-top: 1px solid rgba(127,127,127,0.18);
+  padding-top: 1rem;
+}
+.cert-details summary {
+  cursor: pointer;
+  font-size: 0.92rem;
+  font-weight: 500;
+  list-style: none;
+  display: inline-block;
+  padding: 0.45rem 1rem;
+  border: 1px solid rgba(127,127,127,0.3);
+  border-radius: 4px;
+  opacity: 0.9;
+  transition: background 0.12s ease, border-color 0.12s ease;
+}
+.cert-details summary::-webkit-details-marker { display: none; }
+.cert-details summary::before {
+  content: "+ ";
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  opacity: 0.6;
+}
+.cert-details[open] summary::before { content: "− "; }
+.cert-details summary:hover {
+  background: rgba(127,127,127,0.06);
+  border-color: rgba(127,127,127,0.5);
+}
+.cert-details[open] summary { margin-bottom: 0.8rem; }
 </style>
 
 ##### Featured (5 of 19)
 
-Cards for the credentials most relevant to a quant-research portfolio. Click any card to verify on credential.net.
+The five most relevant for what I do. Click any card to verify on credential.net.
 
 <div class="cert-grid">
 
@@ -125,8 +154,8 @@ Cards for the credentials most relevant to a quant-research portfolio. Click any
 
 ##### All 19 credentials
 
-Flat list with verify links.
-
+<details class="cert-details">
+<summary>View all 14 remaining credentials</summary>
 <ul class="cert-list">
 <li><a class="cert-list-name" href="https://www.credential.net/61e8c579-539b-410d-b5df-cc9b294dffa5" target="_blank" rel="noopener">Sell-Side Equity Research</a><span class="cert-list-meta">2026-09-03</span></li>
 <li><a class="cert-list-name" href="https://www.credential.net/2df82d3a-e082-4951-8947-de45627db69e" target="_blank" rel="noopener">Real Estate Financial Modeling</a><span class="cert-list-meta">2026-08-23</span></li>
@@ -139,7 +168,8 @@ Flat list with verify links.
 <li><a class="cert-list-name" href="https://www.credential.net/9339f167-65c1-4e91-b57d-717e2213a79c" target="_blank" rel="noopener">Applied DCF Valuation Modeling</a><span class="cert-list-meta">2026-07-09</span></li>
 <li><a class="cert-list-name" href="https://www.credential.net/ea9b60e4-0a80-4cbe-b9b2-06ee447655e7" target="_blank" rel="noopener">Introduction to Business Valuation</a><span class="cert-list-meta">2026-07-03</span></li>
 <li><a class="cert-list-name" href="https://www.credential.net/bf542aa4-ac87-48a3-8dfb-e647d6823e2c" target="_blank" rel="noopener">Operational Modeling</a><span class="cert-list-meta">2026-06-17</span></li>
-<li><a class="cert-list-name" href="https://www.credential.net/985d7a2e-2e34-4e50-82f6-12faad39f6fc" target="_blank" rel="noopener">Financial Modeling Guidelines</a><span class="cert-list-meta">2026-05-08</span></li>
 <li><a class="cert-list-name" href="https://www.credential.net/ccf5e9af-cd68-4fe4-848f-3a2918db5567" target="_blank" rel="noopener">Financial Analysis Fundamentals</a><span class="cert-list-meta">2026-05-04</span></li>
 <li><a class="cert-list-name" href="https://www.credential.net/4c148f9c-be4c-498a-aa1c-0ea935cb7ab0" target="_blank" rel="noopener">Math for Finance Professionals</a><span class="cert-list-meta">2026-05-01</span></li>
+<li><a class="cert-list-name" href="https://www.credential.net/b889b9aa-9393-455f-bbef-e40002394a66" target="_blank" rel="noopener">Introduction to 3-Statement Modeling</a><span class="cert-list-meta">2026-05-12</span></li>
 </ul>
+</details>
