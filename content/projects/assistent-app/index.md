@@ -58,13 +58,13 @@ Three stages in sequence; each can be replaced or scaled independently. STT and 
 
 {{< mermaid >}}
 sequenceDiagram
-    participant App as FastAPI app
-    participant OC as opencode serve
+    participant App as FastAPI
+    participant OC as opencode
     App->>OC: spawn on startup
-    OC-->>App: ready (HTTP port)
-    App->>OC: POST /v1/chat (per request)
+    OC-->>App: ready on port
+    App->>OC: POST chat request
     OC-->>App: text reply
-    Note over App,OC: if OC dies, /v1/chat returns 502 (but STT/TTS still serve)
+    Note over App,OC: if OC dies, chat endpoint returns 502 but STT and TTS still serve
 {{< /mermaid >}}
 
 The OpenCode manager handles spawn, health-check, and restart on the FastAPI lifespan. If OpenCode is unreachable (e.g., low RAM on the VPS), `/v1/chat` and `/v1/turn` return 502; `/v1/stt` and `/v1/tts` stay operational.
