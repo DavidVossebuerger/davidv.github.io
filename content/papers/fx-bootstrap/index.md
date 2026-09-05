@@ -4,9 +4,6 @@ date: 2026-06-17
 author: ["David Vossebürger"]
 description: "A bootstrap methodology that preserves exchange-rate regime structure when evaluating fair-value models of FX."
 summary: "Two regime-aware bootstrap resamplers (Regime-Uniform and Regime-Markov) for FX fair-value strategies (BEER, FEER, PPP), validated against naive baselines on three currency pairs with B = 1999 replicates."
-editPost:
-    URL: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6890880"
-    Text: "SSRN 6890880"
 
 ---
 
@@ -22,7 +19,7 @@ editPost:
 
 ---
 
-##### Abstract
+### Abstract
 
 This paper documents a regime-preserving bootstrap procedure for validating the out-of-sample robustness of FX fair-value strategies (BEER, FEER, PPP). The point: standard bootstrap methods (IID, Moving Block, Stationary Block) fail to preserve the regime structure of macro-FX data and inflate Sharpe ratio inference (4.6× overstatement on the IID benchmark).
 
@@ -34,13 +31,13 @@ The calibrated transition matrix passes the Section 11.7 stationarity gate (TV d
 
 ---
 
-##### Honest framing
+### Honest framing
 
 The L0 headline rests on three independent currency pairs, so the Wilcoxon pair-level p-value bottoms out at 0.25 (best possible for n = 3). The decision rule is therefore binary, not significance-based: does Regime-Markov beat IID, MBB, SB, and Regime-Uniform simultaneously on the cross-pool L0? Answer: yes on all four. The p-value does not enter the GO decision.
 
 ---
 
-##### Bootstrap Sharpe loss (cross-pool L0, lower = better)
+### Bootstrap Sharpe loss (cross-pool L0, lower = better)
 
 <figure class="chart-figure">
 <p class="chart-title">Cross-pool L0 loss by resampler</p>
@@ -48,7 +45,7 @@ The L0 headline rests on three independent currency pairs, so the Wilcoxon pair-
 <p class="chart-caption">Lower is better. Regime-Markov (0.22) beats IID (1.01) by 4.6× and Regime-Uniform (0.30) by 1.3× on the cross-pool mean of three independent pairs.</p>
 </figure>
 
-##### Per-pair BEER in-sample Sharpe (2003–2026)
+### Per-pair BEER in-sample Sharpe (2003–2026)
 
 <figure class="chart-figure">
 <p class="chart-title">Per-pair Sharpe, signed</p>
@@ -56,7 +53,7 @@ The L0 headline rests on three independent currency pairs, so the Wilcoxon pair-
 <p class="chart-caption">GBPUSD is negative (−0.107) — a documented limitation, not a pipeline bug. The L0 loss for GBPUSD is therefore inflated by construction (the bootstrap has more difficulty reconstructing a negative Sharpe), which is why the cross-pool mean is what gets reported.</p>
 </figure>
 
-##### Structure losses across five metrics
+### Structure losses across five metrics
 
 | Method | L0 (Sharpe) | L1 (corr) | L2 (Wasserstein) | L3_fro | L3_spec | L4_temporal |
 |---|---:|---:|---:|---:|---:|---:|
@@ -70,7 +67,7 @@ L1 and L2 are noted in the paper as "discriminates poorly" across methods — jo
 
 ---
 
-##### §11.7 stationarity gate — cap sensitivity
+### §11.7 stationarity gate — cap sensitivity
 
 | Cap | TV drift | Gate (TV &lt; 0.10) | Max forbidden mass |
 |---:|---:|:---:|---:|
@@ -86,7 +83,7 @@ TV drift is constant at 0.0996 across all caps; the 3% cap used in the main run 
 
 ---
 
-##### Committed result artefacts
+### Committed result artefacts
 
 The repo ships the full main-run output under `mc_regime/outputs/runs/poc_v14_main/`:
 
@@ -101,7 +98,7 @@ No pipeline re-run required to inspect numbers — the artefacts are committed t
 
 ---
 
-##### Reproduce
+### Reproduce
 
 ```bash
 git clone https://github.com/DavidVossebuerger/MC-Regime.git

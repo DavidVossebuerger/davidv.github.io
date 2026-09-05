@@ -31,7 +31,7 @@ editPost:
 
 ---
 
-##### Abstract
+### Abstract
 
 This paper evaluates two rule-based ICT trading strategies — the Daily Swing Framework and a Composite signal aggregator — within a reproducible backtesting framework. The empirical basis is a multi-asset run across six instruments (EURUSD, GBPUSD, USDJPY, XAUUSD, USA500IDXUSD, USATECHIDXUSD) on M30 bid data from 2007 to 2025 (Dukascopy), with calibration, out-of-sample (OOS), and forward phases examined separately per instrument.
 
@@ -41,13 +41,13 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 ---
 
-##### Headline result
+### Headline result
 
 > Across six instruments and 12 strategy-instrument combinations, the daily-swing framework and the composite signal aggregator deliver negative risk-adjusted returns on every single pairing. Under realistic retail costs, both strategies lose to a naive IID benchmark.
 
 ---
 
-##### Equity curves — EURUSD, 2007–2025
+### Equity curves — EURUSD, 2007–2025
 
 <figure class="chart-figure">
 <p class="chart-title">Cumulative PnL (EURUSD, weekly bucket, 10 000 EUR starting capital)</p>
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ---
 
-##### Multi-asset results (initial capital 10 000 EUR)
+### Multi-asset results (initial capital 10 000 EUR)
 
 <figure class="chart-figure">
 <p class="chart-title">Annualised Sharpe ratio by instrument and strategy</p>
@@ -145,7 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ---
 
-##### Cost-attribution finding
+### Cost-attribution finding
 
 <figure class="chart-figure">
 <p class="chart-title">EURUSD Daily Swing Framework — Sharpe ratio under execution cost scenarios</p>
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 ---
 
-##### Reproduce
+### Reproduce
 
 ```bash
 git clone https://github.com/DavidVossebuerger/po3-ict-backtesting.git

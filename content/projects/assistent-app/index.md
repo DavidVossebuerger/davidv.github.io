@@ -3,10 +3,7 @@ title: "Voice Assistant Backend"
 date: 2026-08-27
 author: ["David Vossebürger"]
 description: "Voice pipeline: STT (Groq Whisper) → LLM (OpenCode) → TTS (Google Cloud). Personal voice assistant running on a VPS, reachable from phone."
-summary: "Voice pipeline with STT, LLM, and TTS stages running on a VPS. Source is private because the deployment is tightly coupled to my server and phone."
-editPost:
-    URL: "https://github.com/DavidVossebuerger/Assistent-App"
-    Text: "Source (private)"
+summary: "Voice pipeline with STT, LLM, and TTS stages running on a VPS. Source is private because the deployment is tightly coupled to the author's server and phone."
 
 ---
 
@@ -94,4 +91,4 @@ Tests/                   Audio samples for end-to-end testing
 
 ##### Why this isn't on GitHub
 
-The repo contains hardcoded VPS hostnames, a GCP service-account JSON, phone-specific webhook URLs, and systemd unit files tied to my user/group IDs. Stripping those dependencies into a reproducible public release is more work than the diagram above justifies.
+The repo contains hardcoded VPS hostnames, a GCP service-account JSON, phone-specific webhook URLs, and systemd unit files tied to specific user/group IDs. Stripping those dependencies into a reproducible public release is more work than the diagram above justifies.
