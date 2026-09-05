@@ -64,11 +64,11 @@ date: 2026-09-05
 </a>
 </div>
 <div class="cert-card">
-<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/RTIJ3RRVZVT4" target="_blank" rel="noopener">
-<img class="cert-thumb" src="/certificates/coursera/linear-regression-with-python.jpg" alt="Linear Regression with Python certificate">
+<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/C4RVYBUULTLJ" target="_blank" rel="noopener">
+<img class="cert-thumb" src="/certificates/coursera/risk-management-and-financial-theory.jpg" alt="Risk Management and Financial Theory certificate">
 <div class="cert-body">
-<p class="cert-title">Linear Regression with Python</p>
-<p class="cert-meta">Coursera</p>
+<p class="cert-title">Risk Management and Financial Theory</p>
+<p class="cert-meta">Duke University</p>
 <p class="cert-verify">Verify →</p>
 </div>
 </a>
@@ -81,11 +81,11 @@ date: 2026-09-05
 <div class="cert-grid">
 
 <div class="cert-card">
-<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/C4RVYBUULTLJ" target="_blank" rel="noopener">
-<img class="cert-thumb" src="/certificates/coursera/risk-management-and-financial-theory.jpg" alt="Risk Management and Financial Theory certificate">
+<a class="cert-link" href="https://www.coursera.org/account/accomplishments/verify/RTIJ3RRVZVT4" target="_blank" rel="noopener">
+<img class="cert-thumb" src="/certificates/coursera/linear-regression-with-python.jpg" alt="Linear Regression with Python certificate">
 <div class="cert-body">
-<p class="cert-title">Risk Management and Financial Theory</p>
-<p class="cert-meta">Duke University</p>
+<p class="cert-title">Linear Regression with Python</p>
+<p class="cert-meta">Coursera</p>
 <p class="cert-verify">Verify →</p>
 </div>
 </a>
