@@ -301,9 +301,21 @@
   border-radius: 6px;
   background: rgba(127,127,127,0.03);
 }
+.chart-figure .chart-canvas-wrap {
+  position: relative;
+  width: 100%;
+}
+.chart-figure .chart-canvas-wrap.tall { height: 280px; }
+.chart-figure .chart-canvas-wrap.short { height: 200px; }
+@media (max-width: 600px) {
+  .chart-figure .chart-canvas-wrap.tall { height: 240px; }
+  .chart-figure .chart-canvas-wrap.short { height: 180px; }
+}
 .chart-figure canvas {
-  max-width: 100%;
-  height: auto !important;
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
 }
 .chart-figure .chart-caption {
   margin-top: 0.6rem;

@@ -36,7 +36,7 @@ The calibrated transition matrix passes the Section 11.7 stationarity gate (TV d
 
 <figure class="chart-figure">
 <p class="chart-title">Bootstrap Sharpe loss (Regime-Markov = 1.0× baseline)</p>
-<canvas id="mc-loss-chart" height="240"></canvas>
+<div class="chart-canvas-wrap short"><canvas id="mc-loss-chart"></canvas></div>
 <p class="chart-caption">Lower is better. Regime-Markov recovers the tightest cross-pool Sharpe distribution; the naive IID bootstrap overstates strategy edge by a factor of 4.6×. Source: §11 of the paper, B = 1999 replicates on a BEER pricer for EURUSD, GBPUSD, USDJPY.</p>
 </figure>
 

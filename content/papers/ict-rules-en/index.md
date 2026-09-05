@@ -49,7 +49,7 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 <figure class="chart-figure">
 <p class="chart-title">Annualised Sharpe ratio by instrument and strategy</p>
-<canvas id="ict-sharpe-chart" height="280"></canvas>
+<div class="chart-canvas-wrap tall"><canvas id="ict-sharpe-chart"></canvas></div>
 <p class="chart-caption">All 12 strategy–instrument combinations produce negative Sharpe ratios. The X-axis lists the six instruments in the same order as the table below.</p>
 </figure>
 
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 <figure class="chart-figure">
 <p class="chart-title">EURUSD Daily Swing Framework — Sharpe ratio under execution cost scenarios</p>
-<canvas id="ict-cost-chart" height="240"></canvas>
+<div class="chart-canvas-wrap short"><canvas id="ict-cost-chart"></canvas></div>
 <p class="chart-caption">Frictionless execution would have produced a positive Sharpe of +0.81. Retail-level spread and slippage (2 bps + 1 bps) flip it to −3.50. Source: cost-attribution scenario in <code>results/multi_asset_validation.json</code>.</p>
 </figure>
 
