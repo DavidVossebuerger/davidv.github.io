@@ -20,14 +20,14 @@ editPost:
 
 ##### Pipeline
 
-```mermaid
+{{< mermaid >}}
 flowchart LR
     Phone[Android phone] -- audio --> API[FastAPI /v1/turn]
     API --> STT[Groq Whisper<br/>whisper-large-v3-turbo]
     STT --> LLM[OpenCode subprocess<br/>MiniMax-M2.7-highspeed]
     LLM --> TTS[Google Cloud TTS<br/>de-DE-Wavenet-B]
     TTS -- mp3 --> Phone
-```
+{{< /mermaid >}}
 
 Three stages in sequence; each can be replaced or scaled independently. STT and TTS calls are async; the LLM subprocess is spawned at app startup via FastAPI lifespan.
 
@@ -59,7 +59,7 @@ Three stages in sequence; each can be replaced or scaled independently. STT and 
 
 ##### OpenCode subprocess (lifespan-managed)
 
-```mermaid
+{{< mermaid >}}
 sequenceDiagram
     participant App as FastAPI app
     participant OC as opencode serve
@@ -68,7 +68,7 @@ sequenceDiagram
     App->>OC: POST /v1/chat (per request)
     OC-->>App: text reply
     Note over App,OC: if OC dies, /v1/chat returns 502<br/>but STT/TTS still serve
-```
+{{< /mermaid >}}
 
 The OpenCode manager handles spawn, health-check, and restart on the FastAPI lifespan. If OpenCode is unreachable (e.g., low RAM on the VPS), `/v1/chat` and `/v1/turn` return 502; `/v1/stt` and `/v1/tts` stay operational.
 
