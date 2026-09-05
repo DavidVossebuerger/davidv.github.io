@@ -1,5 +1,5 @@
 ---
 title: "Projects"
-description: "Public open-source projects and code repositories by David Vossebürger — FX strategy backtesting and US macro forecasting."
+description: "Public open-source projects, private systems (with rationale), and code repositories by David Vossebürger — FX strategy backtesting, US macro forecasting, voice assistant backend."
 ---
 

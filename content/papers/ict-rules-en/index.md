@@ -19,6 +19,8 @@ editPost:
   </div>
 </a>
 
+{{< ssrn id="6700099" >}}
+
 ---
 
 <div class="audit-banner">

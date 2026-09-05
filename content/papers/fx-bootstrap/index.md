@@ -18,6 +18,8 @@ editPost:
   </div>
 </a>
 
+{{< ssrn id="6890880" >}}
+
 ---
 
 ##### Abstract

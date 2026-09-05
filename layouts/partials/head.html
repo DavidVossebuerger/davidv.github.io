@@ -204,7 +204,87 @@
   font-size: 0.82rem;
   opacity: 0.7;
 }
+.ssrn-card {
+  display: block;
+  margin: 1.5rem 0;
+  padding: 1rem 1.1rem 0.9rem;
+  border: 1px solid rgba(127,127,127,0.22);
+  border-left: 3px solid currentColor;
+  border-radius: 4px;
+  color: inherit;
+  text-decoration: none;
+  font-size: 0.93rem;
+  line-height: 1.5;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.ssrn-card:hover {
+  background: rgba(127,127,127,0.05);
+  border-color: rgba(127,127,127,0.4);
+}
+.ssrn-card .ssrn-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  font-size: 0.78rem;
+  margin-bottom: 0.45rem;
+  opacity: 0.75;
+}
+.ssrn-card .ssrn-badge {
+  background: currentColor;
+  color: var(--theme, #fff);
+  padding: 0.05rem 0.45rem;
+  border-radius: 3px;
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.ssrn-card .ssrn-id,
+.ssrn-card .ssrn-year {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+.ssrn-card .ssrn-title {
+  font-weight: 600;
+  font-size: 1.02rem;
+  margin: 0.1rem 0 0.3rem;
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+}
+.ssrn-card .ssrn-authors {
+  font-size: 0.82rem;
+  margin: 0 0 0.55rem;
+  opacity: 0.85;
+}
+.ssrn-card .ssrn-abstract {
+  font-size: 0.88rem;
+  margin: 0 0 0.7rem;
+  opacity: 0.92;
+}
+.ssrn-card .ssrn-repo {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 0.78rem;
+  margin: 0 0 0.55rem;
+  opacity: 0.7;
+  word-break: break-all;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.ssrn-card .ssrn-cta {
+  font-size: 0.82rem;
+  margin: 0;
+  font-weight: 500;
+}
 </style>
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (window.mermaid && document.querySelector('.mermaid')) {
+    mermaid.initialize({ startOnLoad: true, securityLevel: 'loose', theme: 'neutral' });
+  }
+});
+</script>
 
 <style>
 .audit-banner {
