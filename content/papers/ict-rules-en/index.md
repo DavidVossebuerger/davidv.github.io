@@ -2,7 +2,6 @@
 title: "Rule-Based Evaluation of PO3-Inspired ICT Strategies: A Reproducible Analysis of Weekly Profile and Daily Swing Framework"
 date: 2026-05-03
 lastmod: 2026-06-12
-tags: ["FX", "ICT", "PO3", "backtesting", "reproducibility", "negative-results"]
 author: ["David Vossebürger"]
 description: "Reproducible, rule-based evaluation of PO3-inspired ICT strategies on weekly profile and daily swing timeframes — six instruments, 18 years of M30 data."
 summary: "Reproducible, rule-based evaluation of PO3-inspired ICT strategies using weekly-profile and daily-swing frameworks on six instruments across 18 years of M30 data. Negative-result study."

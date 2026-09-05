@@ -1,7 +1,6 @@
 ---
 title: "Regime-Preserving Bootstrap for FX Fair-Value Models"
 date: 2026-06-17
-tags: ["FX", "bootstrap", "fair-value", "BEER", "FEER", "PPP", "regime-detection"]
 author: ["David Vossebürger"]
 description: "A bootstrap methodology that preserves exchange-rate regime structure when evaluating fair-value models of FX."
 summary: "Two regime-aware bootstrap resamplers (Regime-Uniform and Regime-Markov) for FX fair-value strategies (BEER, FEER, PPP), validated against naive baselines on three currency pairs with B = 1999 replicates."
