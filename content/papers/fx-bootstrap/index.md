@@ -22,13 +22,13 @@ editPost:
 
 ##### Abstract
 
-This paper documents a regime-preserving bootstrap procedure for validating the out-of-sample robustness of FX fair-value strategies (BEER, FEER, PPP). The central idea is that standard bootstrap methods (IID, Moving Block, Stationary Block) destroy the economic regime structure of macro-FX data and thereby systematically bias Sharpe ratio inference.
+This paper documents a regime-preserving bootstrap procedure for validating the out-of-sample robustness of FX fair-value strategies (BEER, FEER, PPP). The point: standard bootstrap methods (IID, Moving Block, Stationary Block) fail to preserve the regime structure of macro-FX data and inflate Sharpe ratio inference (4.6× overstatement on the IID benchmark).
 
 We propose two regime-aware resamplers — Regime-Uniform (block resampling within macro-regimes) and Regime-Markov (block resampling with calibrated Markov transition matrix) — and validate them using five structure metrics, a Sharpe loss metric, an arrangement distance, a stationarity gate per Section 11.7, and Wilcoxon paired tests with Benjamini-Hochberg FDR.
 
-Applied to a BEER pricer for three currency pairs (EURUSD, GBPUSD, USDJPY) with B = 1999 bootstrap replicates, the key finding is: **Regime-Markov reduces the bootstrap Sharpe loss by a factor of 1.3× compared to Regime-Uniform and by a factor of 4.6× compared to the naive IID benchmark.** The Markov transition structure provides the additional gain over pure block resampling.
+Applied to a BEER pricer for three currency pairs (EURUSD, GBPUSD, USDJPY) with B = 1999 bootstrap replicates, **Regime-Markov reduces bootstrap Sharpe loss by 1.3× vs. Regime-Uniform and 4.6× vs. IID.** The Markov transition structure provides the additional gain over pure block resampling.
 
-The calibrated transition matrix passes the Section 11.7 stationarity gate (TV drift = 0.10), validating forward projections over short horizons of ∼3–5 Markov steps. The paper documents the complete metric definitions, the implementation, and the honest limits of cross-pair generalization.
+The calibrated transition matrix passes the Section 11.7 stationarity gate (TV drift = 0.10), validating forward projections over short horizons of ∼3–5 Markov steps. The paper documents the complete metric definitions, the implementation, and the limits of cross-pair generalization.
 
 ---
 

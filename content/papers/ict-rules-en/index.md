@@ -23,7 +23,7 @@ editPost:
 
 <div class="audit-banner">
 
-**Audit framing.** This is an independent empirical test of two strategies popularised inside the ICT/PO3 trading community — the Daily Swing Framework and a Composite signal aggregator. The author is not a member of the community and has no position in EURUSD or any instrument tested. The work exists to determine whether the folklore survives realistic retail transaction costs.
+**Audit framing.** This is an independent empirical test of two strategies popularised inside the ICT/PO3 trading community — the Daily Swing Framework and a Composite signal aggregator. The author is not a member of the community and has no position in EURUSD or any instrument tested. Tests whether the framework survives realistic retail transaction costs.
 
 </div>
 
@@ -41,7 +41,7 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 ##### Headline result
 
-> Across six instruments and 12 strategy-instrument combinations, the daily-swing framework and the composite signal aggregator deliver negative risk-adjusted returns on every single pairing. The naive IID benchmark beats both strategies on the cost-attribution metric. The folklore does not survive contact with realistic retail costs.
+> Across six instruments and 12 strategy-instrument combinations, the daily-swing framework and the composite signal aggregator deliver negative risk-adjusted returns on every single pairing. Under realistic retail costs, both strategies lose to a naive IID benchmark.
 
 ---
 
@@ -107,9 +107,9 @@ document.addEventListener('DOMContentLoaded', function() {
 <p class="chart-caption">Frictionless execution would have produced a positive Sharpe of +0.81. Retail-level spread and slippage (2 bps + 1 bps) flip it to −3.50. Source: cost-attribution scenario in <code>results/multi_asset_validation.json</code>.</p>
 </figure>
 
-Under idealized frictionless execution, the Daily Swing Framework on EURUSD achieves a Sharpe of **+0.81**. Under realistic retail conditions (spread 2 bps, slippage 1 bps), the same strategy delivers a Sharpe of **−3.50**. The edge in the rule logic is destroyed entirely by execution costs — not by the rules being wrong, but by the strategy not surviving its own turnover.
+Under idealized frictionless execution, the Daily Swing Framework on EURUSD achieves a Sharpe of **+0.81**. Under realistic retail conditions (spread 2 bps, slippage 1 bps), the same strategy delivers a Sharpe of **−3.50**. Execution costs erase the rule edge on EURUSD — not because the rules are wrong, but because the strategy does not survive its own turnover.
 
-This pattern repeats across all six instruments and both strategies. It is the central, reproducible finding of the audit.
+This pattern repeats across all six instruments and both strategies. It is the main finding.
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {

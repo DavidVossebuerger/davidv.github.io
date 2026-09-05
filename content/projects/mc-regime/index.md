@@ -14,7 +14,7 @@ editPost:
 
 ##### Overview
 
-Standard block-bootstrap methods (IID, Moving Block, Stationary Block) destroy the economic regime structure of macro-FX data and thereby bias Sharpe ratio inference. This project proposes two regime-aware resamplers:
+Standard block-bootstrap methods (IID, Moving Block, Stationary Block) fail to preserve regime structure in macro-FX data and bias Sharpe inference. This project proposes two regime-aware resamplers:
 
 - **Regime-Uniform** — resampling of entire regime blocks uniformly at random.
 - **Regime-Markov** — resampling of entire regime blocks via a calibrated Markov transition matrix.

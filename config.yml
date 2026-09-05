@@ -23,7 +23,7 @@ menu:
           weight: 4
 
 params:
-    description: "This website hosts David Vossebürger's research papers, projects, certificates, course materials, data, and contact information."
+    description: "Research papers, projects, certificates, and contact details for David Vossebürger."
     author: David Vossebürger
     # googleAnalyticsID: G-XXXXX
     DateFormat: January 2006
