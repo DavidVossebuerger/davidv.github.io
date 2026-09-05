@@ -23,9 +23,9 @@ editPost:
 {{< mermaid >}}
 flowchart LR
     Phone[Android phone] -- audio --> API[FastAPI /v1/turn]
-    API --> STT[Groq Whisper<br/>whisper-large-v3-turbo]
-    STT --> LLM[OpenCode subprocess<br/>MiniMax-M2.7-highspeed]
-    LLM --> TTS[Google Cloud TTS<br/>de-DE-Wavenet-B]
+    API --> STT[Groq Whisper (whisper-large-v3-turbo)]
+    STT --> LLM[OpenCode subprocess (MiniMax-M2.7-highspeed)]
+    LLM --> TTS[Google Cloud TTS (de-DE-Wavenet-B)]
     TTS -- mp3 --> Phone
 {{< /mermaid >}}
 
@@ -67,7 +67,7 @@ sequenceDiagram
     OC-->>App: ready (HTTP port)
     App->>OC: POST /v1/chat (per request)
     OC-->>App: text reply
-    Note over App,OC: if OC dies, /v1/chat returns 502<br/>but STT/TTS still serve
+    Note over App,OC: if OC dies, /v1/chat returns 502 (but STT/TTS still serve)
 {{< /mermaid >}}
 
 The OpenCode manager handles spawn, health-check, and restart on the FastAPI lifespan. If OpenCode is unreachable (e.g., low RAM on the VPS), `/v1/chat` and `/v1/turn` return 502; `/v1/stt` and `/v1/tts` stay operational.
