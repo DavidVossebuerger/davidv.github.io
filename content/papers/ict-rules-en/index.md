@@ -117,7 +117,8 @@ Source: [`results/multi_asset_validation.json`](https://github.com/DavidVossebue
 document.addEventListener('DOMContentLoaded', function() {
   if (!window.Chart) return;
   const labels = ['EURUSD','GBPUSD','USDJPY','XAUUSD','USA500','USATECH'];
-  const ds = [swing=[-3.50,-3.46,-3.89,-2.47,-1.60,-1.46], comp=[-1.00,-1.24,-0.94,-0.72,-0.53,-0.67]];
+  const ds = [-3.50,-3.46,-3.89,-2.47,-1.60,-1.46];
+  const comp = [-1.00,-1.24,-0.94,-0.72,-0.53,-0.67];
   const css = getComputedStyle(document.body);
   const accent = (css.color || '#333').trim();
   const muted = accent.replace('rgb', 'rgba').replace(')', ', 0.55)');

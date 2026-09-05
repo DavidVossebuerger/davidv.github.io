@@ -70,11 +70,17 @@ L1 and L2 are noted in the paper as "discriminates poorly" across methods — jo
 
 ##### §11.7 stationarity gate — cap sensitivity
 
-<figure class="chart-figure">
-<p class="chart-title">TV drift across cap values 0.5%–10%</p>
-<div class="chart-canvas-wrap short"><canvas id="mc-cap-chart"></canvas></div>
-<p class="chart-caption">The stationarity gate (TV &lt; 0.10) passes identically across all seven caps. The 3% cap used in the main run is non-binding.</p>
-</figure>
+| Cap | TV drift | Gate (TV &lt; 0.10) | Max forbidden mass |
+|---:|---:|:---:|---:|
+| 0.5 % | 0.0996 | PASS | 0.0 % |
+| 1.0 % | 0.0996 | PASS | 0.0 % |
+| 2.0 % | 0.0996 | PASS | 0.0 % |
+| 3.0 % | 0.0996 | PASS | 0.0 % |
+| 4.0 % | 0.0996 | PASS | 0.0 % |
+| 5.0 % | 0.0996 | PASS | 0.0 % |
+| 10.0 % | 0.0996 | PASS | 0.0 % |
+
+TV drift is constant at 0.0996 across all caps; the 3% cap used in the main run is non-binding.
 
 ---
 
@@ -89,7 +95,7 @@ The repo ships the full main-run output under `mc_regime/outputs/runs/poc_v14_ma
 - [`regime_windows.npy`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/regime_windows.npy) — 8 regime boundaries
 - [`FINAL_REPORT.md`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/FINAL_REPORT.md) — v13→v14 audit trail
 
-No pipeline re-run required to inspect numbers; the artefacts are citable.
+No pipeline re-run required to inspect numbers — the artefacts are committed to the repo.
 
 ---
 
@@ -170,36 +176,8 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
 
-    // Cap sensitivity chart
-    const capCtx = document.getElementById('mc-cap-chart');
-    if (capCtx) {
-      const caps = data.cap_sensitivity;
-      new Chart(capCtx, {
-        type: 'line',
-        data: {
-          labels: caps.map(c => (c.cap_pct*100).toFixed(1) + '%'),
-          datasets: [{
-            label: 'TV drift',
-            data: caps.map(c => c.tv_drift),
-            borderColor: accent,
-            backgroundColor: accent,
-            pointRadius: 4,
-            borderWidth: 1.6,
-            tension: 0,
-            fill: false
-          }]
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => 'TV drift: ' + ctx.parsed.y.toFixed(4) } } },
-          scales: {
-            y: { title: { display: true, text: 'TV drift (gate threshold = 0.10)' }, min: 0.09, max: 0.105, grid: { color: 'rgba(127,127,127,0.12)' } },
-            x: { title: { display: true, text: 'Sinkhorn cap' }, grid: { display: false } }
-          }
-        }
-      });
-    }
+    // (cap-sensitivity chart removed: TV drift is constant across all caps;
+    //  a table communicates the result with no visual fabrication.)
   });
 });
 </script>
