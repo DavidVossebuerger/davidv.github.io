@@ -1,10 +1,10 @@
 ---
-title: "Rule-Based Evaluation of PO3-Inspired ICT Strategies: A Reproducible Analysis of Weekly Profile and Daily Swing Framework"
+title: "Auditing ICT/PO3 FX Heuristics: An Independent Empirical Test of the Daily Swing Framework"
 date: 2026-05-03
 lastmod: 2026-06-12
 author: ["David Vossebürger"]
-description: "Reproducible, rule-based evaluation of PO3-inspired ICT strategies on weekly profile and daily swing timeframes — six instruments, 18 years of M30 data."
-summary: "Reproducible, rule-based evaluation of PO3-inspired ICT strategies using weekly-profile and daily-swing frameworks on six instruments across 18 years of M30 data. Negative-result study."
+description: "Independent empirical audit of PO3-inspired ICT trading heuristics (Daily Swing Framework, Composite) on six instruments over 18 years of M30 data. Negative-result study."
+summary: "Independent audit of PO3-inspired ICT trading folklore on six instruments over 18 years of M30 data. Result: no risk-adjusted edge under realistic retail transaction costs."
 editPost:
     URL: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6700099"
     Text: "SSRN 6700099"
@@ -21,6 +21,14 @@ editPost:
 
 ---
 
+<div class="audit-banner">
+
+**Audit framing.** This is an independent empirical test of two strategies popularised inside the ICT/PO3 trading community — the Daily Swing Framework and a Composite signal aggregator. The author is not a member of the community and has no position in EURUSD or any instrument tested. The work exists to determine whether the folklore survives realistic retail transaction costs.
+
+</div>
+
+---
+
 ##### Abstract
 
 This paper evaluates two rule-based ICT trading strategies — the Daily Swing Framework and a Composite signal aggregator — within a reproducible backtesting framework. The empirical basis is a multi-asset run across six instruments (EURUSD, GBPUSD, USDJPY, XAUUSD, USA500IDXUSD, USATECHIDXUSD) on M30 bid data from 2007 to 2025 (Dukascopy), with calibration, out-of-sample (OOS), and forward phases examined separately per instrument.
@@ -31,3 +39,55 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 ---
 
+##### Headline result
+
+> Across six instruments and 12 strategy-instrument combinations, the daily-swing framework and the composite signal aggregator deliver negative risk-adjusted returns on every single pairing. The naive IID benchmark beats both strategies on the cost-attribution metric. The folklore does not survive contact with realistic retail costs.
+
+---
+
+##### Multi-asset results (initial capital 10 000 EUR)
+
+| Symbol | Strategy | Trades | Win Rate | Profit Factor | Max DD | Sharpe |
+|---|---|---:|---:|---:|---:|---:|
+| EURUSD | Daily Swing | 1,624 | 36.6 % | 0.30 | 100.0 % | −3.50 |
+| EURUSD | Composite | 197 | 46.2 % | 0.31 | 69.8 % | −1.00 |
+| GBPUSD | Daily Swing | 1,545 | 35.2 % | 0.25 | 100.0 % | −3.46 |
+| GBPUSD | Composite | 218 | 44.5 % | 0.24 | 80.7 % | −1.24 |
+| USDJPY | Daily Swing | 1,617 | 31.9 % | 0.21 | 100.0 % | −3.89 |
+| USDJPY | Composite | 189 | 49.7 % | 0.30 | 71.0 % | −0.94 |
+| XAUUSD | Daily Swing | 1,508 | 38.4 % | 0.47 | 99.8 % | −2.47 |
+| XAUUSD | Composite | 185 | 55.1 % | 0.46 | 49.5 % | −0.72 |
+| USA500 | Daily Swing | 151 | 39.7 % | 0.13 | 100.0 % | −1.60 |
+| USA500 | Composite | 108 | 53.7 % | 0.18 | 66.1 % | −0.53 |
+| USATECH | Daily Swing | 92 | 35.9 % | 0.08 | 100.0 % | −1.46 |
+| USATECH | Composite | 114 | 53.5 % | 0.38 | 46.7 % | −0.67 |
+
+Source: [`results/multi_asset_validation.json`](https://github.com/DavidVossebuerger/po3-ict-backtesting/blob/main/results/multi_asset_validation.json) in the source repository.
+
+---
+
+##### Cost-attribution finding
+
+Under idealized frictionless execution, the Daily Swing Framework on EURUSD achieves a Sharpe of **+0.81**. Under realistic retail conditions (spread 2 bps, slippage 1 bps), the same strategy delivers a Sharpe of **−3.50**. The edge in the rule logic is destroyed entirely by execution costs — not by the rules being wrong, but by the strategy not surviving its own turnover.
+
+This pattern repeats across all six instruments and both strategies. It is the central, reproducible finding of the audit.
+
+---
+
+##### Reproduce
+
+```bash
+git clone https://github.com/DavidVossebuerger/po3-ict-backtesting.git
+cd po3-ict-backtesting
+python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+
+# Single-asset quick run (~minutes)
+python -m backtesting_system.main --symbols EURUSD --quick
+
+# Full multi-asset run (~3h on 4-core VPS)
+python -m backtesting_system.main \
+    --symbols EURUSD,GBPUSD,USDJPY,XAUUSD,USA500IDXUSD,USATECHIDXUSD
+```
+
+The repo includes 23 unit tests, walk-forward analysis across 7 windows, parameter sensitivity over 18 configs, Monte Carlo resampling (1 000 iterations), and stress tests.
