@@ -45,6 +45,49 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 ---
 
+##### Equity curves — EURUSD, 2007–2025
+
+<figure class="chart-figure">
+<p class="chart-title">Cumulative PnL (EURUSD, weekly bucket, 10 000 EUR starting capital)</p>
+<div class="chart-canvas-wrap tall"><canvas id="ict-equity-chart"></canvas></div>
+<p class="chart-caption">Click the legend to toggle strategies. Both strategies trend toward zero despite the buy &amp; hold baseline holding its initial capital. Per-trade data is only committed to the source repo for EURUSD; the other five instruments report summary metrics in <code>results/summary.csv</code> only.</p>
+</figure>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.Chart) return;
+  const ctx = document.getElementById('ict-equity-chart');
+  if (!ctx) return;
+  fetch('/data/po3_equity_curves.json').then(r => r.json()).then(data => {
+    const labels = data.weeks.map(w => w.date);
+    const ds = data.weeks.map(w => w.daily_swing);
+    const co = data.weeks.map(w => w.composite);
+    const css = getComputedStyle(document.body);
+    const accent = (css.color || '#333').trim();
+    const muted = accent.replace('rgb', 'rgba').replace(')', ', 0.55)');
+    new Chart(ctx, {
+      type: 'line',
+      data: { labels: labels, datasets: [
+        { label: 'Daily Swing', data: ds, borderColor: accent, backgroundColor: accent, pointRadius: 0, borderWidth: 1.4, tension: 0.1 },
+        { label: 'Composite', data: co, borderColor: muted, backgroundColor: muted, pointRadius: 0, borderWidth: 1.4, tension: 0.1 }
+      ]},
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        plugins: { legend: { position: 'bottom', labels: { boxWidth: 14 } } },
+        scales: {
+          y: { type: 'logarithmic', title: { display: true, text: 'Equity (EUR, log scale)' }, grid: { color: 'rgba(127,127,127,0.12)' } },
+          x: { ticks: { maxTicksLimit: 8, autoSkip: true }, grid: { display: false } }
+        }
+      }
+    });
+  });
+});
+</script>
+
+---
+
 ##### Multi-asset results (initial capital 10 000 EUR)
 
 <figure class="chart-figure">

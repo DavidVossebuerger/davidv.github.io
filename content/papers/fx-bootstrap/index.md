@@ -32,45 +32,174 @@ The calibrated transition matrix passes the Section 11.7 stationarity gate (TV d
 
 ---
 
-##### Headline result
+##### Honest framing
+
+The L0 headline rests on three independent currency pairs, so the Wilcoxon pair-level p-value bottoms out at 0.25 (best possible for n = 3). The decision rule is therefore binary, not significance-based: does Regime-Markov beat IID, MBB, SB, and Regime-Uniform simultaneously on the cross-pool L0? Answer: yes on all four. The p-value does not enter the GO decision.
+
+---
+
+##### Bootstrap Sharpe loss (cross-pool L0, lower = better)
 
 <figure class="chart-figure">
-<p class="chart-title">Bootstrap Sharpe loss (Regime-Markov = 1.0× baseline)</p>
+<p class="chart-title">Cross-pool L0 loss by resampler</p>
 <div class="chart-canvas-wrap short"><canvas id="mc-loss-chart"></canvas></div>
-<p class="chart-caption">Lower is better. Regime-Markov recovers the tightest cross-pool Sharpe distribution; the naive IID bootstrap overstates strategy edge by a factor of 4.6×. Source: §11 of the paper, B = 1999 replicates on a BEER pricer for EURUSD, GBPUSD, USDJPY.</p>
+<p class="chart-caption">Lower is better. Regime-Markov (0.22) beats IID (1.01) by 4.6× and Regime-Uniform (0.30) by 1.3× on the cross-pool mean of three independent pairs.</p>
 </figure>
+
+##### Per-pair BEER in-sample Sharpe (2003–2026)
+
+<figure class="chart-figure">
+<p class="chart-title">Per-pair Sharpe, signed</p>
+<div class="chart-canvas-wrap short"><canvas id="mc-pair-chart"></canvas></div>
+<p class="chart-caption">GBPUSD is negative (−0.107) — a documented limitation, not a pipeline bug. The L0 loss for GBPUSD is therefore inflated by construction (the bootstrap has more difficulty reconstructing a negative Sharpe), which is why the cross-pool mean is what gets reported.</p>
+</figure>
+
+##### Structure losses across five metrics
+
+| Method | L0 (Sharpe) | L1 (corr) | L2 (Wasserstein) | L3_fro | L3_spec | L4_temporal |
+|---|---:|---:|---:|---:|---:|---:|
+| IID | 1.0146 | 0.0957 | 0.0957 | 0.5636 | 0.2823 | 0.3289 |
+| MBB | 0.4324 | 0.1275 | 0.1275 | 0.7231 | 0.3534 | 0.1225 |
+| SB | 0.4659 | 0.1202 | 0.1202 | 0.6821 | 0.3337 | 0.1523 |
+| Regime-Uniform | 0.2977 | 0.1324 | 0.1207 | 0.6953 | 0.3223 | 0.1195 |
+| **Regime-Markov** | **0.2211** | **0.0839** | 0.1207 | **0.5502** | **0.2433** | **0.0641** |
+
+L1 and L2 are noted in the paper as "discriminates poorly" across methods — joint distribution preservation is a structural property that all block-level resamplers fail on equally. L3_spec (spectral) and L4_temporal show Regime-Markov's structural edge most cleanly.
+
+---
+
+##### §11.7 stationarity gate — cap sensitivity
+
+<figure class="chart-figure">
+<p class="chart-title">TV drift across cap values 0.5%–10%</p>
+<div class="chart-canvas-wrap short"><canvas id="mc-cap-chart"></canvas></div>
+<p class="chart-caption">The stationarity gate (TV &lt; 0.10) passes identically across all seven caps. The 3% cap used in the main run is non-binding.</p>
+</figure>
+
+---
+
+##### Committed result artefacts
+
+The repo ships the full main-run output under `mc_regime/outputs/runs/poc_v14_main/`:
+
+- [`decision.json`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/decision.json) — GO/NO-GO, all L0–L4 aggregated losses, per-pair Sharpes
+- [`sinkhorn_cap_sensitivity.csv`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/sinkhorn_cap_sensitivity.csv) — cap sweep
+- [`test_results.json`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/test_results.json) — 24 Wilcoxon tests + BH-FDR
+- [`transition_matrix_calibrated.npy`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/transition_matrix_calibrated.npy) — Sinkhorn output
+- [`regime_windows.npy`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/regime_windows.npy) — 8 regime boundaries
+- [`FINAL_REPORT.md`](https://github.com/DavidVossebuerger/MC-Regime/blob/master/mc_regime/outputs/runs/poc_v14_main/FINAL_REPORT.md) — v13→v14 audit trail
+
+No pipeline re-run required to inspect numbers; the artefacts are citable.
+
+---
+
+##### Reproduce
+
+```bash
+git clone https://github.com/DavidVossebuerger/MC-Regime.git
+cd MC-Regime
+pip install -e .
+
+python3 -u mc_regime/scripts/run_poc.py \
+    --replications 1999 \
+    --pairs all \
+    --pricer beer \
+    --calibrate-target empirical \
+    --output outputs/runs/main
+```
+
+23 unit tests, ~25 minutes wall-clock on a modern multi-core CPU.
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
   if (!window.Chart) return;
-  const ctx = document.getElementById('mc-loss-chart');
-  if (!ctx) return;
-  const css = getComputedStyle(document.body);
-  const accent = (css.color || '#333').trim();
-  const muted = accent.replace('rgb', 'rgba').replace(')', ', 0.55)');
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['IID (naive)', 'Regime-Uniform', 'Regime-Markov'],
-      datasets: [{
-        data: [4.6, 1.3, 1.0],
-        backgroundColor: [muted, muted, accent],
-        borderWidth: 0,
-        barThickness: 56
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => 'Loss multiplier: ' + ctx.parsed.y.toFixed(1) + '×' } } },
-      scales: {
-        y: { title: { display: true, text: 'Bootstrap Sharpe loss multiplier (lower = better)' }, beginAtZero: true, grid: { color: 'rgba(127,127,127,0.12)' } },
-        x: { grid: { display: false } }
-      }
+  fetch('/data/mc_regime_data.json').then(r => r.json()).then(data => {
+    const css = getComputedStyle(document.body);
+    const accent = (css.color || '#333').trim();
+    const muted = accent.replace('rgb', 'rgba').replace(')', ', 0.55)');
+
+    // L0 chart
+    const lossCtx = document.getElementById('mc-loss-chart');
+    if (lossCtx) {
+      const l0 = data.L0_losses;
+      const labels = Object.keys(l0);
+      const values = labels.map(k => l0[k]);
+      const isMarkov = k => k === 'Regime-Markov';
+      new Chart(lossCtx, {
+        type: 'bar',
+        data: { labels: labels, datasets: [{
+          data: values,
+          backgroundColor: labels.map(l => isMarkov(l) ? accent : muted),
+          borderWidth: 0,
+          barThickness: 36
+        }]},
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.parsed.y.toFixed(3) } } },
+          scales: {
+            y: { title: { display: true, text: 'Cross-pool L0 loss (lower = better)' }, beginAtZero: true, grid: { color: 'rgba(127,127,127,0.12)' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    // Per-pair Sharpe chart
+    const pairCtx = document.getElementById('mc-pair-chart');
+    if (pairCtx) {
+      const labels = ['EURUSD', 'GBPUSD', 'USDJPY'];
+      const values = labels.map(l => data.per_pair_sharpe[l.toLowerCase()]);
+      new Chart(pairCtx, {
+        type: 'bar',
+        data: { labels: labels, datasets: [{
+          data: values,
+          backgroundColor: values.map(v => v >= 0 ? accent : muted),
+          borderWidth: 0,
+          barThickness: 50
+        }]},
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => ctx.label + ': ' + ctx.parsed.y.toFixed(3) } } },
+          scales: {
+            y: { title: { display: true, text: 'BEER in-sample Sharpe' }, grid: { color: 'rgba(127,127,127,0.12)' } },
+            x: { grid: { display: false } }
+          }
+        }
+      });
+    }
+
+    // Cap sensitivity chart
+    const capCtx = document.getElementById('mc-cap-chart');
+    if (capCtx) {
+      const caps = data.cap_sensitivity;
+      new Chart(capCtx, {
+        type: 'line',
+        data: {
+          labels: caps.map(c => (c.cap_pct*100).toFixed(1) + '%'),
+          datasets: [{
+            label: 'TV drift',
+            data: caps.map(c => c.tv_drift),
+            borderColor: accent,
+            backgroundColor: accent,
+            pointRadius: 4,
+            borderWidth: 1.6,
+            tension: 0,
+            fill: false
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => 'TV drift: ' + ctx.parsed.y.toFixed(4) } } },
+          scales: {
+            y: { title: { display: true, text: 'TV drift (gate threshold = 0.10)' }, min: 0.09, max: 0.105, grid: { color: 'rgba(127,127,127,0.12)' } },
+            x: { title: { display: true, text: 'Sinkhorn cap' }, grid: { display: false } }
+          }
+        }
+      });
     }
   });
 });
 </script>
-
----
-
