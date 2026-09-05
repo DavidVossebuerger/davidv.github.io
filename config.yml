@@ -38,7 +38,7 @@ params:
     ShowBreadCrumbs: false
     ShowCodeCopyButtons: true
     ShowAllPagesInArchive: false
-    MainSections: [books, courses, papers, data, projects, certificates]
+    MainSections: [papers, projects, certificates]
     ShowToc: false
     disableScrollToTop: true
     TocOpen: true

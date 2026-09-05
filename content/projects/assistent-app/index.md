@@ -94,10 +94,4 @@ Tests/                   Audio samples for end-to-end testing
 
 ##### Why this isn't on GitHub
 
-The repo contains:
-- Hardcoded VPS hostnames
-- GCP service-account JSON (gitignored but still in working tree)
-- Phone-specific webhook URLs
-- systemd unit files with my user/group IDs
-
-Cleaning all of that into a reproducible public release is real work. The architecture diagram above and the endpoint table capture what the system is for someone reading this site — the actual code is one request away if you want to talk about it.
+The repo contains hardcoded VPS hostnames, a GCP service-account JSON, phone-specific webhook URLs, and systemd unit files tied to my user/group IDs. Stripping those dependencies into a reproducible public release is more work than the diagram above justifies.

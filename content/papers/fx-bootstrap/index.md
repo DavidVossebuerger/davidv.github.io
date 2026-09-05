@@ -28,7 +28,7 @@ This paper documents a regime-preserving bootstrap procedure for validating the 
 
 We propose two regime-aware resamplers — Regime-Uniform (block resampling within macro-regimes) and Regime-Markov (block resampling with calibrated Markov transition matrix) — and validate them using five structure metrics, a Sharpe loss metric, an arrangement distance, a stationarity gate per Section 11.7, and Wilcoxon paired tests with Benjamini-Hochberg FDR.
 
-Applied to a BEER pricer for three currency pairs (EURUSD, GBPUSD, USDJPY) with B = 1999 bootstrap replicates, **Regime-Markov reduces bootstrap Sharpe loss by 1.3× vs. Regime-Uniform and 4.6× vs. IID.** The Markov transition structure provides the additional gain over pure block resampling.
+Applied to a BEER pricer for three currency pairs (EURUSD, GBPUSD, USDJPY) with B = 1999 bootstrap replicates, **Regime-Markov** reduces bootstrap Sharpe loss by 1.3× vs. Regime-Uniform and 4.6× vs. IID. The Markov transition structure provides the additional gain over pure block resampling.
 
 The calibrated transition matrix passes the Section 11.7 stationarity gate (TV drift = 0.10), validating forward projections over short horizons of ∼3–5 Markov steps. The paper documents the complete metric definitions, the implementation, and the limits of cross-pair generalization.
 
@@ -64,7 +64,7 @@ The L0 headline rests on three independent currency pairs, so the Wilcoxon pair-
 | MBB | 0.4324 | 0.1275 | 0.1275 | 0.7231 | 0.3534 | 0.1225 |
 | SB | 0.4659 | 0.1202 | 0.1202 | 0.6821 | 0.3337 | 0.1523 |
 | Regime-Uniform | 0.2977 | 0.1324 | 0.1207 | 0.6953 | 0.3223 | 0.1195 |
-| **Regime-Markov** | **0.2211** | **0.0839** | 0.1207 | **0.5502** | **0.2433** | **0.0641** |
+| Regime-Markov | 0.2211 | 0.0839 | 0.1207 | 0.5502 | 0.2433 | 0.0641 |
 
 L1 and L2 are noted in the paper as "discriminates poorly" across methods — joint distribution preservation is a structural property that all block-level resamplers fail on equally. L3_spec (spectral) and L4_temporal show Regime-Markov's structural edge most cleanly.
 

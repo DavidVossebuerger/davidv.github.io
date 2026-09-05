@@ -25,7 +25,7 @@ editPost:
 
 <div class="audit-banner">
 
-**Audit framing.** This is an independent empirical test of two strategies popularised inside the ICT/PO3 trading community — the Daily Swing Framework and a Composite signal aggregator. The author is not a member of the community and has no position in EURUSD or any instrument tested. Tests whether the framework survives realistic retail transaction costs.
+**Audit framing.** This is an independent empirical test of two strategies popularised inside the ICT/PO3 trading community — the Daily Swing Framework and a Composite signal aggregator. No commercial or community affiliation with ICT/PO3. Tests whether the framework survives realistic retail transaction costs.
 
 </div>
 
