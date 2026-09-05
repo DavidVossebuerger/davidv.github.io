@@ -19,10 +19,10 @@ summary: "Voice pipeline with STT, LLM, and TTS stages running on a VPS. Source 
 
 {{< mermaid >}}
 flowchart LR
-    Phone[Android phone] -- audio --> API[FastAPI /v1/turn]
-    API --> STT[Groq Whisper (whisper-large-v3-turbo)]
-    STT --> LLM[OpenCode subprocess (MiniMax-M2.7-highspeed)]
-    LLM --> TTS[Google Cloud TTS (de-DE-Wavenet-B)]
+    Phone[Phone] -- audio --> API[FastAPI]
+    API --> STT[STT: Whisper]
+    STT --> LLM[LLM: OpenCode]
+    LLM --> TTS[TTS: Google Cloud]
     TTS -- mp3 --> Phone
 {{< /mermaid >}}
 
