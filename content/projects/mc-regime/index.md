@@ -21,7 +21,7 @@ Standard block-bootstrap methods (IID, Moving Block, Stationary Block) fail to p
 
 Validated against three naive baselines on three currency pairs (EURUSD, GBPUSD, USDJPY) at B = 1999 bootstrap replicates with a BEER fair-value pricer.
 
-**Key result:** Regime-Markov reduces the cross-pool Sharpe loss by a factor of **1.35×** over Regime-Uniform and by **4.59×** over the naive IID baseline.
+**Key result:** Regime-Markov reduces the cross-pool Sharpe loss by **1.3×** over Regime-Uniform and by **4.6×** over the naive IID baseline.
 
 ---
 
