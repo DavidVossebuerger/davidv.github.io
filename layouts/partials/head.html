@@ -292,3 +292,34 @@
   font-size: inherit;
 }
 </style>
+
+<style>
+.chart-figure {
+  margin: 1.5rem 0 2rem;
+  padding: 1rem 1rem 0.5rem;
+  border: 1px solid rgba(127,127,127,0.18);
+  border-radius: 6px;
+  background: rgba(127,127,127,0.03);
+}
+.chart-figure canvas {
+  max-width: 100%;
+  height: auto !important;
+}
+.chart-figure .chart-caption {
+  margin-top: 0.6rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(127,127,127,0.15);
+  font-size: 0.82rem;
+  opacity: 0.75;
+  line-height: 1.4;
+  text-align: center;
+}
+.chart-figure .chart-title {
+  font-size: 0.92rem;
+  font-weight: 600;
+  margin: 0 0 0.6rem;
+  text-align: center;
+  letter-spacing: -0.005em;
+}
+</style>
+<script src="/js/chart.umd.min.js" defer></script>

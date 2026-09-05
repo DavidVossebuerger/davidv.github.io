@@ -32,3 +32,45 @@ The calibrated transition matrix passes the Section 11.7 stationarity gate (TV d
 
 ---
 
+##### Headline result
+
+<figure class="chart-figure">
+<p class="chart-title">Bootstrap Sharpe loss (Regime-Markov = 1.0× baseline)</p>
+<canvas id="mc-loss-chart" height="240"></canvas>
+<p class="chart-caption">Lower is better. Regime-Markov recovers the tightest cross-pool Sharpe distribution; the naive IID bootstrap overstates strategy edge by a factor of 4.6×. Source: §11 of the paper, B = 1999 replicates on a BEER pricer for EURUSD, GBPUSD, USDJPY.</p>
+</figure>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.Chart) return;
+  const ctx = document.getElementById('mc-loss-chart');
+  if (!ctx) return;
+  const css = getComputedStyle(document.body);
+  const accent = (css.color || '#333').trim();
+  const muted = accent.replace('rgb', 'rgba').replace(')', ', 0.55)');
+  new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: ['IID (naive)', 'Regime-Uniform', 'Regime-Markov'],
+      datasets: [{
+        data: [4.6, 1.3, 1.0],
+        backgroundColor: [muted, muted, accent],
+        borderWidth: 0,
+        barThickness: 56
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => 'Loss multiplier: ' + ctx.parsed.y.toFixed(1) + '×' } } },
+      scales: {
+        y: { title: { display: true, text: 'Bootstrap Sharpe loss multiplier (lower = better)' }, beginAtZero: true, grid: { color: 'rgba(127,127,127,0.12)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+});
+</script>
+
+---
+

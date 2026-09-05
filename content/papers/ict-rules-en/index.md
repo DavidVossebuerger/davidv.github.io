@@ -47,6 +47,12 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 ##### Multi-asset results (initial capital 10 000 EUR)
 
+<figure class="chart-figure">
+<p class="chart-title">Annualised Sharpe ratio by instrument and strategy</p>
+<canvas id="ict-sharpe-chart" height="280"></canvas>
+<p class="chart-caption">All 12 strategy–instrument combinations produce negative Sharpe ratios. The X-axis lists the six instruments in the same order as the table below.</p>
+</figure>
+
 | Symbol | Strategy | Trades | Win Rate | Profit Factor | Max DD | Sharpe |
 |---|---|---:|---:|---:|---:|---:|
 | EURUSD | Daily Swing | 1,624 | 36.6 % | 0.30 | 100.0 % | −3.50 |
@@ -64,13 +70,79 @@ Initial drafting was assisted by large language models; all quantitative analysi
 
 Source: [`results/multi_asset_validation.json`](https://github.com/DavidVossebuerger/po3-ict-backtesting/blob/main/results/multi_asset_validation.json) in the source repository.
 
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.Chart) return;
+  const labels = ['EURUSD','GBPUSD','USDJPY','XAUUSD','USA500','USATECH'];
+  const ds = [swing=[-3.50,-3.46,-3.89,-2.47,-1.60,-1.46], comp=[-1.00,-1.24,-0.94,-0.72,-0.53,-0.67]];
+  const css = getComputedStyle(document.body);
+  const accent = (css.color || '#333').trim();
+  const muted = accent.replace('rgb', 'rgba').replace(')', ', 0.55)');
+  new Chart(document.getElementById('ict-sharpe-chart'), {
+    type: 'bar',
+    data: { labels: labels, datasets: [
+      { label: 'Daily Swing', data: ds[0], backgroundColor: accent },
+      { label: 'Composite',   data: ds[1], backgroundColor: muted }
+    ]},
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { position: 'bottom', labels: { boxWidth: 14 } } },
+      scales: {
+        y: { title: { display: true, text: 'Annualised Sharpe' }, grid: { color: 'rgba(127,127,127,0.12)' } },
+        x: { grid: { display: false } }
+      }
+    }
+  });
+});
+</script>
+
 ---
 
 ##### Cost-attribution finding
 
+<figure class="chart-figure">
+<p class="chart-title">EURUSD Daily Swing Framework — Sharpe ratio under execution cost scenarios</p>
+<canvas id="ict-cost-chart" height="240"></canvas>
+<p class="chart-caption">Frictionless execution would have produced a positive Sharpe of +0.81. Retail-level spread and slippage (2 bps + 1 bps) flip it to −3.50. Source: cost-attribution scenario in <code>results/multi_asset_validation.json</code>.</p>
+</figure>
+
 Under idealized frictionless execution, the Daily Swing Framework on EURUSD achieves a Sharpe of **+0.81**. Under realistic retail conditions (spread 2 bps, slippage 1 bps), the same strategy delivers a Sharpe of **−3.50**. The edge in the rule logic is destroyed entirely by execution costs — not by the rules being wrong, but by the strategy not surviving its own turnover.
 
 This pattern repeats across all six instruments and both strategies. It is the central, reproducible finding of the audit.
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  if (!window.Chart) return;
+  const ctx = document.getElementById('ict-cost-chart');
+  if (!ctx) return;
+  const css = getComputedStyle(document.body);
+  const accent = (css.color || '#333').trim();
+  const data = {
+    labels: ['Frictionless', 'Retail (2+1 bps)', 'Conservative (2.5+2.5 bps)'],
+    datasets: [{
+      data: [0.81, -3.50, -3.65],
+      backgroundColor: [accent, accent, accent],
+      borderWidth: 0,
+      barThickness: 38
+    }]
+  };
+  new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      indexAxis: 'y',
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: { legend: { display: false }, tooltip: { callbacks: { label: ctx => 'Sharpe: ' + ctx.parsed.x.toFixed(2) } } },
+      scales: {
+        x: { title: { display: true, text: 'Annualised Sharpe' }, grid: { color: 'rgba(127,127,127,0.12)' } },
+        y: { grid: { display: false } }
+      }
+    }
+  });
+});
+</script>
 
 ---
 
