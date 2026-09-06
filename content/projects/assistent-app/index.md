@@ -64,7 +64,7 @@ sequenceDiagram
     OC-->>App: ready on port
     App->>OC: POST chat request
     OC-->>App: text reply
-    Note over App,OC: if OC dies, chat endpoint returns 502 but STT and TTS still serve
+    Note over App,OC: if OC dies, /v1/chat returns 502
 {{< /mermaid >}}
 
 The OpenCode manager handles spawn, health-check, and restart on the FastAPI lifespan. If OpenCode is unreachable (e.g., low RAM on the VPS), `/v1/chat` and `/v1/turn` return 502; `/v1/stt` and `/v1/tts` stay operational.
