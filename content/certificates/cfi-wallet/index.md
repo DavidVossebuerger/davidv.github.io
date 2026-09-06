@@ -4,36 +4,19 @@ description: "Corporate Finance Institute credentials earned by David Vossebürg
 date: 2026-09-05
 ---
 
+All credentials here are sub-certificates for the FMVA® (Financial Modeling & Valuation Analyst) programme. They cover financial modeling, valuation, Excel, and PowerPoint. The five shown above are the ones most relevant to financial and corporate work. The remaining 15 are intermediate steps toward the FMVA.
+
 <style>
-.cert-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-  gap: 1.2rem;
-  margin: 1.5rem 0;
-}
-.cert-card {
-  border: 1px solid rgba(127,127,127,0.22);
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--theme);
-}
-.cert-card a.cert-link { display: block; color: inherit; text-decoration: none; }
-.cert-card .cert-thumb { display: block; width: 100%; height: auto; border-bottom: 1px solid rgba(127,127,127,0.22); }
-.cert-card .cert-body { padding: 0.7rem 0.9rem 0.85rem; }
+.cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.2rem; margin: 1.5rem 0; align-items: start; }
+.cert-card { border: 1px solid rgba(127,127,127,0.22); border-radius: 4px; overflow: hidden; }
+.cert-card a.cert-link { display: flex; color: inherit; text-decoration: none; outline: none; flex-direction: column; }
+.cert-card a.cert-link:focus-visible { outline: 2px solid rgba(127,127,127,0.5); outline-offset: 2px; }
+.cert-card .cert-thumb { display: block; width: 100%; height: auto; flex: none; }
+.cert-card .cert-body { padding: 0.7rem 0.9rem 0.85rem; font-size: 0.92rem; line-height: 1.4; }
 .cert-card .cert-title { font-size: 0.95rem; margin: 0 0 0.25rem; line-height: 1.3; }
 .cert-card .cert-meta { font-size: 0.78rem; margin: 0 0 0.45rem; opacity: 0.7; }
-.cert-card .cert-verify { font-size: 0.78rem; margin: 0; }
-.cert-details {
-  margin: 1.4rem 0 0;
-  border-top: 1px solid rgba(127,127,127,0.18);
-  padding-top: 1rem;
-}
-.cert-details summary {
-  cursor: pointer; font-size: 0.92rem; font-weight: 500; list-style: none;
-  display: inline-block; padding: 0.45rem 1rem;
-  border: 1px solid rgba(127,127,127,0.3); border-radius: 4px; opacity: 0.9;
-  transition: background 0.12s ease, border-color 0.12s ease;
-}
+.cert-details { margin: 1.4rem 0 0; border-top: 1px solid rgba(127,127,127,0.18); padding-top: 1rem; }
+.cert-details summary { cursor: pointer; font-size: 0.92rem; font-weight: 500; list-style: none; display: inline-block; padding: 0.45rem 1rem; border: 1px solid rgba(127,127,127,0.3); border-radius: 4px; opacity: 0.9; }
 .cert-details summary::-webkit-details-marker { display: none; }
 .cert-details summary::before { content: "+ "; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; opacity: 0.6; }
 .cert-details[open] summary::before { content: "− "; }
@@ -44,12 +27,20 @@ date: 2026-09-05
 <div class="cert-grid">
 
 <div class="cert-card">
+<a class="cert-link" href="https://www.credential.net/e1009429-9146-4bd8-9cc3-5cbead2cc1eb" target="_blank" rel="noopener">
+<img class="cert-thumb" src="/certificates/cfi/financial-modeling-and-valuation-analyst-fmva.png" alt="Financial Modeling & Valuation Analyst (FMVA®) certificate">
+<div class="cert-body">
+<p class="cert-title">Financial Modeling & Valuation Analyst (FMVA®)</p>
+<p class="cert-meta">Corporate Finance Institute · 2026-09-06</p>
+</div>
+</a>
+</div>
+<div class="cert-card">
 <a class="cert-link" href="https://www.credential.net/985d7a2e-2e34-4e50-82f6-12faad39f6fc" target="_blank" rel="noopener">
 <img class="cert-thumb" src="/certificates/cfi/financial-modeling-guidelines.png" alt="Financial Modeling Guidelines certificate">
 <div class="cert-body">
 <p class="cert-title">Financial Modeling Guidelines</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-05-08</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -59,7 +50,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">3-Statement Modeling</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-05-17</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -69,7 +59,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">DCF Valuation Modeling</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-04</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -79,17 +68,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Auditing and Balancing a 3-Statement Model</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-06-07</p>
-<p class="cert-verify">Verify →</p>
-</div>
-</a>
-</div>
-<div class="cert-card">
-<a class="cert-link" href="https://www.credential.net/52e3d36b-ca51-45e4-8403-482d03877ee3" target="_blank" rel="noopener">
-<img class="cert-thumb" src="/certificates/cfi/introduction-to-bank-valuation.png" alt="Introduction to Bank Valuation certificate">
-<div class="cert-body">
-<p class="cert-title">Introduction to Bank Valuation</p>
-<p class="cert-meta">Corporate Finance Institute · 2026-09-01</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -97,16 +75,24 @@ date: 2026-09-05
 </div>
 
 <details class="cert-details">
-<summary>View all 14 remaining credentials</summary>
+<summary>View all 15 remaining credentials</summary>
 <div class="cert-grid">
 
+<div class="cert-card">
+<a class="cert-link" href="https://www.credential.net/52e3d36b-ca51-45e4-8403-482d03877ee3" target="_blank" rel="noopener">
+<img class="cert-thumb" src="/certificates/cfi/introduction-to-bank-valuation.png" alt="Introduction to Bank Valuation certificate">
+<div class="cert-body">
+<p class="cert-title">Introduction to Bank Valuation</p>
+<p class="cert-meta">Corporate Finance Institute · 2026-09-01</p>
+</div>
+</a>
+</div>
 <div class="cert-card">
 <a class="cert-link" href="https://www.credential.net/61e8c579-539b-410d-b5df-cc9b294dffa5" target="_blank" rel="noopener">
 <img class="cert-thumb" src="/certificates/cfi/sell-side-equity-research.png" alt="Sell-Side Equity Research certificate">
 <div class="cert-body">
 <p class="cert-title">Sell-Side Equity Research</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-09-03</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -116,7 +102,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Real Estate Financial Modeling</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-08-23</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -126,7 +111,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Excel Data Visualization and Dashboards</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-08-02</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -136,7 +120,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">PowerPoint & Pitchbooks</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-26</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -146,7 +129,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Scenario & Sensitivity Analysis</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-22</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -156,7 +138,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Professional Ethics</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-19</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -166,7 +147,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Forecasting Techniques</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-17</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -176,7 +156,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Comparable Valuation Fundamentals</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-15</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -186,7 +165,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Applied DCF Valuation Modeling</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-09</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -196,7 +174,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Introduction to Business Valuation</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-07-03</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -206,7 +183,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Operational Modeling</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-06-17</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -216,7 +192,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Introduction to 3-Statement Modeling</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-05-12</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -226,7 +201,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Financial Analysis Fundamentals</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-05-04</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
@@ -236,7 +210,6 @@ date: 2026-09-05
 <div class="cert-body">
 <p class="cert-title">Math for Finance Professionals</p>
 <p class="cert-meta">Corporate Finance Institute · 2026-05-01</p>
-<p class="cert-verify">Verify →</p>
 </div>
 </a>
 </div>
